@@ -1,0 +1,14 @@
+class Solution:
+    def maximumSumSubarray (s,k,arr):
+        wstart = 0
+        wend = 0
+        s=0
+        ans=0
+        while wend < len(arr):
+            s +=arr[wend]
+            if(wend - wstart +1 == k):
+                ans = max(ans, s)
+                s-= arr[wstart]
+                wstart += 1
+            wend+=1
+        return ans
