@@ -1,0 +1,19 @@
+class Solution:
+    def maximumSubarraySum(self, nums: List[int], k: int) -> int:
+        hash=defaultdict(int)
+        v=0
+        ans=0
+        for i in range(len(nums)):
+            v+=nums[i]
+            hash[nums[i]]+=1
+            if i>=k:
+                hash[nums[i-k]]-=1
+                v-=nums[i-k]
+                if hash[nums[i-k]]==0:
+                    del hash[nums[i-k]]
+            if len(hash)==k:
+                ans=max(ans,v)
+        return ans
+                    
+      
+        
